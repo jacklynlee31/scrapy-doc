@@ -1,13 +1,12 @@
-********************
 SCRAPY USER’S GUIDE
-********************
+^^^^^^^^^^^^^^^^^^^^
 
 It’s no secret that we live in a digital age. Thanks to technology, we have access to all kinds of information. However, too much information can be a curse. If you’re looking for something specific, you might have to go to multiple websites before you find the answer. The issue becomes even more complicated when you are working in academia or research. Researchers are often working with limited sources and an overload of information. So how do we, as researchers, navigate this new and complicated digital landscape?
 
 
-===================
 Introducing Scrapy
-===================
+-------------------
+
 Scrapy is a data scraper that helps you collect and extract data from the web. Data scrapers, also known as web crawlers, allow us to gather information from practically any website we choose. With Scrapy, we can get the data we need and export it to a readable format. More than ever before, we can control digital information.
 
 Using a program like Scrapy requires a basic knowledge of HTML, CSS, your computer’s command line, and more. For new users, this can seem daunting. That’s where this guide comes in.
@@ -20,263 +19,336 @@ This guide will show you how to:
 
 To advance the field of research, we must be willing to take advantage of all that technology has to offer us. This guide will help you scrape the web while introducing you to a series of tools that will help you take control of your computer and the web.
 
-=================
 Getting Started
-=================
-
-In order to complete the steps in this guide, you will need the following programs:
+----------------
+To complete the steps in this guide, you will need the following programs:
 
  *	A web browser like Google Chrome, Firefox, or Safari.
  *	A command line program.
  *	A text editor like Notepad or TextEdit.
 
-Note: If you are unfamiliar with one of the words or programs mentioned in this guide, check the Glossary for a basic overview.
-
 These programs should already be on your computer. If you are on a Mac, your command line will be called Terminal. If you are on a Windows PC, it will be called Command Prompt.
-
+ 
 Note: Terminal and Command Prompt are both extremely powerful tools. Do NOT run a command unless you know what it does first.
-If you are using Windows, skip the next section and go to the Installing Scrapy: Windows section. If you are working on a Mac, continue to the following section.
 
----------------------------
+If you are using Windows, skip the next section and go to the Installing Scrapy: Windows section. If you are working on a Mac, continue to the following section.
+ 
 Installing Scrapy: Mac OSX
----------------------------
+===========================
 
 Scrapy is built using Python, a programming language. There are multiple packages and dependencies that must be installed for Scrapy to work on your computer.
-
-^^^^^^^^^^^^^^
+ 
 Install Xcode
-^^^^^^^^^^^^^^
+''''''''''''''
 
-Let’s set up your Mac so we can use Apple’s developer software. Open your Terminal, type the following command, and press Enter:
-xcode-select --install
+Let’s set up your Mac so we can use Xcode, Apple’s developer software. Open your Terminal, type the following command, and press Enter:
 
+.. code-block:: python
+ xcode-select --install
+ 
 Note: Everything you type into a command line is case-sensitive. For accuracy, you can copy and paste the commands you see in this guide into your program.
-
+ 
 Your computer will ask if you would like to install Xcode. Accept the install and let the download complete before continuing.
+
 To confirm that Xcode was successfully installed, type the following command and press Enter:
-
+ 
 xcode-select -v
-
+ 
 The terminal should show your version of Xcode.
-
-^^^^^^^^^^^^^^^^^
+ 
 Install Homebrew
-^^^^^^^^^^^^^^^^^
+'''''''''''''''''
 
-Next, we need to make sure that Scrapy has everything it needs to run correctly on our computer.
-
-Homebrew is a package manager for Mac. Install it by typing the following command and pressing Enter:
-
+Next, we need to make sure that Scrapy has everything it needs to run correctly on our computer. The first dependency we need to install is Homebrew, a package manager for Mac. Install it by typing the following command and pressing Enter:
+ 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+ 
+Note: If you are using OS X Lion 10.7 or below, you will have to use the following two commands:
+ 
+cd /usr/local
 
-Note: If you are using OS X Lion 10.7 or below, you will have to use the following commands:
-
-cd /usr/local 
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-
-The Terminal will tell you to press RETURN to continue the installation. It will also ask you to type in your password. This is the same password you use to login to your computer. Homebrew is just making sure that the same person who owns the computer is also installing the program. 
-
-When you type your password into the Terminal, it will look like nothing is happening. This is normal. As an added security measure, it won't show your password when you type it. Go ahead and type your password and press Enter.
-
-^^^^^^^^^^^^^^^^^^^
+ 
+The Terminal will tell you to press RETURN to continue the installation. It will also ask you to type in your password. This is the same password you use to login to your computer. As an added security measure, the Terminal won’t show your password when you type it. It might look like the Terminal isn’t responding, but this is normal. Go ahead and type in your password and press Enter to continue.
+ 
 Update the .bashrc
-^^^^^^^^^^^^^^^^^^^
+'''''''''''''''''''
 
 Now that Homebrew is installed, you will need to make sure that your Mac will be able to find the packages. The following two commands will update your computer's .bashrc file, ensuring that your system can find what it needs:
-
+ 
 echo "export PATH=/usr/local/bin:/usr/local/sbin:$PATH" >> ~/.bashrc
-
+ 
 source ~/.bashrc
-
-^^^^^^^^^^^^^^^
+ 
 Install Python
-^^^^^^^^^^^^^^^
+'''''''''''''''
 
-We're almost there! Remember when I told you that Scrapy is built using Python? Well, we need to make sure that Python is installed on our computer using the following command:
-
+We're almost done! Remember when I told you that Scrapy is built using Python? We need to make sure that the correct version of Python is installed on our computer. Use the following command to install Python using Homebrew:
+ 
 brew install python
-
-Your Mac should already come with Python installed, but we need to make sure that we have the latest version. Use the following two commands:
-
+ 
+We need to make sure that we have the latest version of Python. Use the first command to update Homebrew, then use the second command to get the latest version of Python:
+ 
 brew update
+
 brew update python
-
-^^^^^^^^^^^^^^^
+ 
 Install Scrapy
-^^^^^^^^^^^^^^^
+'''''''''''''''
 
-Now we can finally install Scrapy using the following command:
-
+Now we can finally install Scrapy using pip, another package management system:
+ 
 pip install Scrapy
-
+ 
 If you type Scrapy into the Terminal and press Enter, it should show some information about Scrapy commands. This lets you know that your installation was successful.
-
+ 
 If you had problems during your installation, reference the Troubleshooting section at the end of this guide. If not, continue to the Using Scrapy section.
-
----------------------------
+ 
 Installing Scrapy: Windows
----------------------------
+===========================
 
-Scrapy is built using Python, a programming language. There are multiple packages and dependencies that must be installed in order for Scrapy to work on your computer.
-
-^^^^^^^^^^^^^^^^^^
+Scrapy is built using Python, a programming language. There are multiple packages and dependencies that must be installed for Scrapy to work on your computer.
+ 
 Install Miniconda
-^^^^^^^^^^^^^^^^^^
+''''''''''''''''''
 
-The easiest way to install Scrapy on Windows is to use Miniconda, a package management system. Open your web browser and navigate to the following link: (LINK)
+The easiest way to install Scrapy on Windows is to use Miniconda, a package management system. Open your web browser and navigate to the following link: https://conda.io/miniconda.html
 
-Choose the latest version and choose the 64-bit installer.
+Download the latest, 64-bit version of Miniconda for Windows. Go ahead and install Miniconda on your computer.
 
 Note: Make note of where you installed Miniconda on your computer. You will have to navigate to this destination later.
-
-Note: Everything you type into a command line is case-sensitive. For accuracy, you can copy and paste the commands you see in this guide into your program.
-
-^^^^^^^^^^^^
+ 
 Update Path
-^^^^^^^^^^^^
+''''''''''''
 
-Although Miniconda is installed, you need to make sure that your Command Prompt can find the program and use its scripts.
+Now that Miniconda is installed, we need to make sure that our computer knows to use Miniconda’s scripts. To do that, we need to update our computer’s Path.
 
-On your computer, navigate to the folder where Miniconda is installed. The program's path should show at the top of the window. Click the path and use CTRL+C to copy it to your clipboard.
+On your computer, navigate to the folder where Miniconda is installed. The path should show at the top of the window. Click the path and use CTRL+C to copy it to your clipboard.
+Next, in your computer’s search bar, type in Environment Variables. You should see an option that says ‘Edit the system environment variables.’ Select this option, and a new window should open.
 
+Find the PATH environment variable and select it. Click Edit, then click Add. Paste in the path to Miniconda that you copied to your clipboard.
+Click Add. Paste in the path to Miniconda, but add \Scripts\ to the end of the path.
+ 
 Go to the following: My Computer, Properties, Env Variables, Path
 Add the Miniconda Folder
 Add the Miniconda Folder + \Scripts\
+ 
+Open the Command Prompt. Type the following command and press Enter:
 
-Restart the Command Prompt - close it and open it again - so that the changes you just made will take place. Type conda into the Command Prompt and press Enter. It should [CONFIRM THAT MINICONDA IS INSTALLED].
-
-^^^^^^^^^^^^^^^
+conda
+ 
+Note: Everything you type into a command line is case-sensitive. For accuracy, you can copy and paste the commands you see in this guide into your program.
+ 
+The Command Prompt should show that Miniconda is installed.
+ 
 Install Scrapy
-^^^^^^^^^^^^^^^
-
 Next, install Scrapy by typing the following command and pressing Enter:
-
+ 
 conda install -c condo-forge scrapy
-
+ 
 You can confirm that the installation was successful by using the following command:
-
+ 
 run scrapy
-
+ 
 After you press Enter, it should show information to confirm that Scrapy was installed.
+ 
 
-=============
 Using Scrapy
-=============
-Information here.
+-------------
 
-----------------------------
 Web Scraping Best Practices
-----------------------------
+============================
 
 Now that we have everything installed on our computer, we can finally use Scrapy. But before we do, we need to remember that gathering information from the web can be a little complicated. There are some websites that don't want us to gather their data, regardless of content, and put strict guidelines in place to stop you from doing so.
-
+ 
 Although there are ways to avoid being blocked when scraping data, the easiest way is to follow the rules the website provides.
-
+ 
 Every website has a robots.txt file. It tells a web scraper if certain content on a website should be accessed. For example, go to Amazon's website, but use the following link: https://www.amazon.com/robots.txt
-
+ 
 In this example, there is a list of links that shows where a web scraper can go. The site Disallows web scrapers from accessing multiple pages, but there are some pages - such as PrimeMusic or a wishlist - that Amazon Allows.
-
+ 
 It can be confusing to figure out what pages you are allowed to access. Thankfully, Scrapy does it for us using a ROBOTSTXT_OBEY field in a settings file.
-
-Respect the perimeters that a website puts into place, and remember to never use a website's information for profit. For more information on web scraping best practices, go to this website.
-
----------------------
+ 
+Respect the perimeters that a website puts into place, and remember to never use a website's information for profit. For more information on web scraping best practices, go to this website: https://www.promptcloud.com/blog/web-scraping-best-practices
+ 
 Create a New Project
----------------------
+=====================
+ 
+Let's get ready to scrape the web. In this guide, we are going to use Rotten Tomatoes as our example.
 
-Let's get ready to scrape the web. In this guide, we will be using Rotten Tomatoes as our example.
+The first thing we want to do is create a new Scrapy project on our computer. Use your command line to navigate to the location where you want to start your project. This can be done using the cd command.
 
-The first thing we want to do is create a new Scrapy project on our computer. Use your command line to navigate to the location where you want to start your project. This can be done using cd. I've decided that I want to save my project in my Documents folder, so I'll use the following command:
+For example, Mac users would use the following command to access the Documents folder:
 
 cd Documents
 
-Your command line should always start at the 'base' of your computer. Mac users should be able to use the same command to go into their Documents folder. They can also navigate to a different folder using cd.
 
-Windows users can use the following command to go to their Documents folder: COMMAND. Feel free to replace Documents with Desktop/etc for a different location.
+Windows users, on the other hand, would use a command similar to the following (replacing username with your own username):
+
+cd C:\Users\username\Documents
 
 Note: If you aren't sure where you are on your computer, use the command ls (Mac) or dir (Windows) and press Enter. You should see a layout of your current location. If you get too confused, quit out of the command line and reopen it. Your position should 'reset', allowing you to get to where you need to be.
-
+ 
 Now that you're in the folder, let's start a new Scrapy project using the following command:
-
+ 
 scrapy startproject tutorial
+ 
+If you navigate to your chosen folder on your computer, you should see a brand new 'tutorial' directory. While you're in the directory, open the 'tutorial' folder. You should see a list of python files - they have the .py extension.
 
-If you navigate to your chosen folder on your computer, you should see a brand new 'tutorial' directory. While you're in the directory, open the 'tutorial' folder. You should see a list of python files - python files have the .py extension.
+Configure your Settings.py
+===========================
 
-INFORMATION ABOUT CHANGING THE SETTINGS.PY FILE
+Before we begin, let’s make sure that the settings.py file I mentioned earlier is configured to follow the rules of a website’s robots.txt file. Open the settings.py file using your text editor and navigate to the following line:
 
-We want to have a place to store all of the information we scrape from Rotten Tomatoes. Scrapy calls these places items. Think of each item as a container that will hold all of our data.
+# Obey robots.txt rules
+ROBOTSTXT_OBEY = True
 
-First, let's choose what we want to scrape. Maybe we need a list of movie reviews to code for our research project. For the purposes of this tutorial, let's choose 1984's Ghostbusters.
+Make sure that the ROBOTSTXT_OBEY field is set to True, without a hashtag (#) at the beginning of the line.
 
-Navigate to the page in Rotten Tomatoes, then scroll down and click on Audience Reviews.
+Note: The # at the beginning of a line of code means that the line is a comment and won’t affect how the program works.
 
-(SCREEN?)
+It is also important to define your user agent when scraping a website. The user agent field tells a website who is trying to collect their information and why. While not required, the user agent field is an important part of web scraping best practices.
 
-What data do we want to get from this page? Let's get the following information:
- *	Reviewer name
- *	Number of stars awarded
- *	Date
- *	Content of the review
+Find the user agent field in the settings.py file. Remove the hashtag before the user agent field and fill in the information: (screen).
 
-Let's tell Scrapy that we want to get this information. Go back to the tutorial folder on your computer and open the items.py file. Open it in Notepad or TextEdit. You can also use a code editor to open the file, if you have one on your computer.
+Once the fields are set, save the file and return to your folder.
 
-Your items.py file should look similar to the following:
+Create a Spider
+===============
+
+In the world of data scraping, you will often see ‘spiders’ mentioned. Thankfully, we aren’t talking about actual spiders. We use spiders to ‘crawl’ the code and extract the information that we need from a website.
+
+Use the following command to create a new spider:
+
+scrapy genspider reviews link
+
+In your tutorial directory, open the folder called spiders. You should see a new file called reviews_spider.py with the following contents:
 
 SCREEN
 
-All we need to do is tell Scrapy what information we want to collect. Scrapy gives us the following template: 
-name = scrapy.Field()
 
-Let's add our own. Create a new line below the example, but above where it says 'pass'. Type the following:
+(DELETE BELOW INFORMATION?)
 
-reviewer = scrapy.Field()
+We need to create a spider. For that, we need a new python file.
 
-----------------
-Create a Spider
-----------------
+Windows users can open Notepad and should be able to save their file with the .py extension.
 
-In Scrapy, spiders are used to scrape information from the web. They are classes that you define with your own information. Spiders tell Scrapy how to navigate a website and what information to grab.
+Mac users using TextEdit will have to complete the following steps:
+1.	Open TextEdit. Click on TextEdit at the top right of the screen (it should be in bold).
+2.	Open Preferences
+3.	In the New Document window, make sure that the Plain Text option is selected under Format.
+4.	In the Open and Save window, you will see the following option: Add .txt extension to plain text files. Make sure this option is not checked.
+5.	Exit preferences and open a new TextEdit file. You should now be able to proceed.
 
-Open Notepad or TextEdit and paste the following code:
+Once you have your text editor open, copy the following code to your clipboard and paste it into the file:
 
-
+# This line gets all of Scrapy's code and information so we can use it.
 import scrapy
 
 
-class QuotesSpider(scrapy.Spider):
-    name = "quotes"
+# We are defining a new spider called ReviewsSpider.
+class ReviewsSpider(scrapy.Spider):
+    name = "reviews"
 
+    # Scrapy makes requests to the website we choose in order to grab information.
     def start_requests(self):
         urls = [
-            'http://quotes.toscrape.com/page/1/',
-            'http://quotes.toscrape.com/page/2/',
+   'https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
+    # Once we run this spider, the information will be parsed using the following criteria.
     def parse(self, response):
         page = response.url.split("/")[-2]
-        filename = 'quotes-%s.html' % page
+        filename = 'reviews-%s.html' % page
         with open(filename, 'wb') as f:
             f.write(response.body)
         self.log('Saved file %s' % filename)
 
+Different coding languages have different rules. In Python, indentation is very important. Make sure that when you paste the code into your text file, the spacing looks similar to what you see above.
 
-Let's look at what this code is doing. It's defining our Spider and giving it a name ("reviews"). It lists the URL to scrape from, then parses the response.
+As you can see, I have added comments (preceded by a hashtag) that tells you what each piece of code is doing. Take a moment to look through the code.
+
+Once your information is in the file, save it as: reviews_spider.py
+Save the file in the spiders folder in your tutorial project.
+
+
+Run the Spider
+===============
+
+Now that we have our first spider saved, configured, and ready to go, let’s run the file.
+
+Open your command line and make sure you are in your project’s tutorial folder. 
+(Remember, if you aren’t sure where you are, use ls/dir to find out.)
+
+Run the following command:
 
 scrapy crawl reviews
 
-Saved in a reviews.html file. If you open this file, you should see a Rotten Tomatoes page. Remember when we put a URL in our Spider file? This is that URL.
+You are going to see a lot of information pop up into your command line that shows your spider crawling the information. Open your tutorial folder on your computer. You should see a file called reviews-reviews.html
 
-scrapy shell (MAC AND WINDOWS?)
+Open the file using your web browser. You should see a simplified replica of the Rotten Tomatoes review page. So what did Scrapy just do? We gave it a URL and asked it to get us information. We didn’t give it specific criteria, so it returned everything it could find.
 
-Response.css(".user_review::text").extract()[1]
+Extracting & Exporting Data
+============================
 
-================
-Troubleshooting
-================
+We have the information, but it doesn’t do us any good unless we can pull specific parts from the webpage. Let’s say that we want to pull all of the review comments from the page.
 
-================
-Glossary
-================
-Command line: A powerful program used to interact with your computer.
+Scrapy provides a tool called ‘scrapy shell’ that helps us work through our code and develop our spiders. Run scrapy shell using the following commands:
+
+Mac
+scrapy shell ‘https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user’
+
+
+Windows
+scrapy shell “https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user”
+
+
+A lot of information is going to come up in your command line, including some brief instructions and shortcuts that tell you how to navigate the scrapy shell.
+
+Note: The >>> at the beginning of the line tells you that you are in the scrapy shell. To exit the shell, you will have to type in quit().
+
+Find Selectors
+===============
+
+Data scrapers use selectors in order to grab specific parts of a webpage. A website is made up of different kinds of code including HTML and CSS. While HTML has different parts that tells a website how to organize information, CSS tells a website what to look like.
+
+Open your web browser and navigate to the Ghostbuster’s review page. We can view the HTML and CSS of a page directly in our browser by using its Developer Tools.
+
+Chrome
+Right click the webpage and choose Inspect.
+
+Internet Explorer
+Press F12 to open Developer Tools.
+
+Safari
+Make sure that the Develop tab is enabled in your Safari Preferences
+Open the Develop tab and click Show Web Inspector
+
+Find the first review on the page and right-click on it. You should see an option that says Inspect Element. When you inspect the element, you should see that section’s HTML appear in the Developer Tools window.
+
+ 
+
+As you can see in the example above, when we move our cursor over the code, the associated information is highlighted. By doing this, we can easily figure out what selectors to use in our scrapy shell.
+
+In this case, we see div class=”user_review” - this is the information we need.
+
+Open your command line to go back to the scrapy shell. Use the following command:
+
+response.css(‘.user_review::text’)
+
+We are telling the scrapy shell to grab the user_review class.
+
+The shell returns a lot of information, so let’s extract the text we need using the following command:
+
+response.css(‘.user_review::text’).extract_first()
+
+Now you should see all of the movie reviews on that page - text only!
+
+Get Ready to Export
+====================
+
+settings.py
+FEED_FORMAT = “csv”
+FEED_URI = “reviews.csv”
