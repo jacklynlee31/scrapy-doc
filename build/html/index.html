@@ -1,0 +1,337 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SCRAPY USER’S GUIDE &#8212; Scrapy Documentation 1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="scrapy-users-guide">
+<h1>SCRAPY USER’S GUIDE<a class="headerlink" href="#scrapy-users-guide" title="Permalink to this headline">¶</a></h1>
+<p>It’s no secret that we live in a digital age. Thanks to technology, we have access to all kinds of information. However, too much information can be a curse. If you’re looking for something specific, you might have to go to multiple websites before you find the answer. The issue becomes even more complicated when you are working in academia or research. Researchers are often working with limited sources and an overload of information. So how do we, as researchers, navigate this new and complicated digital landscape?</p>
+<div class="section" id="introducing-scrapy">
+<h2>Introducing Scrapy<a class="headerlink" href="#introducing-scrapy" title="Permalink to this headline">¶</a></h2>
+<p>Scrapy is a data scraper that helps you collect and extract data from the web. Data scrapers, also known as web crawlers, allow us to gather information from practically any website we choose. With Scrapy, we can get the data we need and export it to a readable format. More than ever before, we can control digital information.</p>
+<p>Using a program like Scrapy requires a basic knowledge of HTML, CSS, your computer’s command line, and more. For new users, this can seem daunting. That’s where this guide comes in.</p>
+<p>This guide will show you how to:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Use your computer’s command line to install Scrapy.</li>
+<li>Use Scrapy to get information from a website, while adhering to web scraping best practices.</li>
+<li>Export data in a readable format to be used for your next research project or paper.</li>
+</ol>
+</div></blockquote>
+<p>To advance the field of research, we must be willing to take advantage of all that technology has to offer us. This guide will help you scrape the web while introducing you to a series of tools that will help you take control of your computer and the web.</p>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>To complete the steps in this guide, you will need the following programs:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A web browser like Google Chrome, Firefox, or Safari.</li>
+<li>A command line program.</li>
+<li>A text editor like Notepad or TextEdit.</li>
+</ul>
+</div></blockquote>
+<p>These programs should already be on your computer. If you are on a Mac, your command line will be called Terminal. If you are on a Windows PC, it will be called Command Prompt.</p>
+<p>Note: Terminal and Command Prompt are both extremely powerful tools. Do NOT run a command unless you know what it does first.</p>
+<p>If you are using Windows, skip the next section and go to the Installing Scrapy: Windows section. If you are working on a Mac, continue to the following section.</p>
+<div class="section" id="installing-scrapy-mac-osx">
+<h3>Installing Scrapy: Mac OSX<a class="headerlink" href="#installing-scrapy-mac-osx" title="Permalink to this headline">¶</a></h3>
+<p>Scrapy is built using Python, a programming language. There are multiple packages and dependencies that must be installed for Scrapy to work on your computer.</p>
+<div class="section" id="install-xcode">
+<h4>Install Xcode<a class="headerlink" href="#install-xcode" title="Permalink to this headline">¶</a></h4>
+<p>Let’s set up your Mac so we can use Xcode, Apple’s developer software. Open your Terminal, type the following command, and press Enter:</p>
+<p>Note: Everything you type into a command line is case-sensitive. For accuracy, you can copy and paste the commands you see in this guide into your program.</p>
+<p>Your computer will ask if you would like to install Xcode. Accept the install and let the download complete before continuing.</p>
+<p>To confirm that Xcode was successfully installed, type the following command and press Enter:</p>
+<p>xcode-select -v</p>
+<p>The terminal should show your version of Xcode.</p>
+</div>
+<div class="section" id="install-homebrew">
+<h4>Install Homebrew<a class="headerlink" href="#install-homebrew" title="Permalink to this headline">¶</a></h4>
+<p>Next, we need to make sure that Scrapy has everything it needs to run correctly on our computer. The first dependency we need to install is Homebrew, a package manager for Mac. Install it by typing the following command and pressing Enter:</p>
+<p>/usr/bin/ruby -e “$(curl -fsSL <a class="reference external" href="https://raw.githubusercontent.com/Homebrew/install/master/install">https://raw.githubusercontent.com/Homebrew/install/master/install</a>)”</p>
+<p>Note: If you are using OS X Lion 10.7 or below, you will have to use the following two commands:</p>
+<p>cd /usr/local</p>
+<p>mkdir homebrew &amp;&amp; curl -L <a class="reference external" href="https://github.com/Homebrew/brew/tarball/master">https://github.com/Homebrew/brew/tarball/master</a> | tar xz –strip 1 -C homebrew</p>
+<p>The Terminal will tell you to press RETURN to continue the installation. It will also ask you to type in your password. This is the same password you use to login to your computer. As an added security measure, the Terminal won’t show your password when you type it. It might look like the Terminal isn’t responding, but this is normal. Go ahead and type in your password and press Enter to continue.</p>
+</div>
+<div class="section" id="update-the-bashrc">
+<h4>Update the .bashrc<a class="headerlink" href="#update-the-bashrc" title="Permalink to this headline">¶</a></h4>
+<p>Now that Homebrew is installed, you will need to make sure that your Mac will be able to find the packages. The following two commands will update your computer’s .bashrc file, ensuring that your system can find what it needs:</p>
+<p>echo “export PATH=/usr/local/bin:/usr/local/sbin:$PATH” &gt;&gt; ~/.bashrc</p>
+<p>source ~/.bashrc</p>
+</div>
+<div class="section" id="install-python">
+<h4>Install Python<a class="headerlink" href="#install-python" title="Permalink to this headline">¶</a></h4>
+<p>We’re almost done! Remember when I told you that Scrapy is built using Python? We need to make sure that the correct version of Python is installed on our computer. Use the following command to install Python using Homebrew:</p>
+<p>brew install python</p>
+<p>We need to make sure that we have the latest version of Python. Use the first command to update Homebrew, then use the second command to get the latest version of Python:</p>
+<p>brew update</p>
+<p>brew update python</p>
+</div>
+<div class="section" id="install-scrapy">
+<h4>Install Scrapy<a class="headerlink" href="#install-scrapy" title="Permalink to this headline">¶</a></h4>
+<p>Now we can finally install Scrapy using pip, another package management system:</p>
+<p>pip install Scrapy</p>
+<p>If you type Scrapy into the Terminal and press Enter, it should show some information about Scrapy commands. This lets you know that your installation was successful.</p>
+<p>If you had problems during your installation, reference the Troubleshooting section at the end of this guide. If not, continue to the Using Scrapy section.</p>
+</div>
+</div>
+<div class="section" id="installing-scrapy-windows">
+<h3>Installing Scrapy: Windows<a class="headerlink" href="#installing-scrapy-windows" title="Permalink to this headline">¶</a></h3>
+<p>Scrapy is built using Python, a programming language. There are multiple packages and dependencies that must be installed for Scrapy to work on your computer.</p>
+<div class="section" id="install-miniconda">
+<h4>Install Miniconda<a class="headerlink" href="#install-miniconda" title="Permalink to this headline">¶</a></h4>
+<p>The easiest way to install Scrapy on Windows is to use Miniconda, a package management system. Open your web browser and navigate to the following link: <a class="reference external" href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
+<p>Download the latest, 64-bit version of Miniconda for Windows. Go ahead and install Miniconda on your computer.</p>
+<p>Note: Make note of where you installed Miniconda on your computer. You will have to navigate to this destination later.</p>
+</div>
+<div class="section" id="update-path">
+<h4>Update Path<a class="headerlink" href="#update-path" title="Permalink to this headline">¶</a></h4>
+<p>Now that Miniconda is installed, we need to make sure that our computer knows to use Miniconda’s scripts. To do that, we need to update our computer’s Path.</p>
+<p>On your computer, navigate to the folder where Miniconda is installed. The path should show at the top of the window. Click the path and use CTRL+C to copy it to your clipboard.
+Next, in your computer’s search bar, type in Environment Variables. You should see an option that says ‘Edit the system environment variables.’ Select this option, and a new window should open.</p>
+<p>Find the PATH environment variable and select it. Click Edit, then click Add. Paste in the path to Miniconda that you copied to your clipboard.
+Click Add. Paste in the path to Miniconda, but add Scriptsto the end of the path.</p>
+<p>Go to the following: My Computer, Properties, Env Variables, Path
+Add the Miniconda Folder
+Add the Miniconda Folder + Scripts</p>
+<p>Open the Command Prompt. Type the following command and press Enter:</p>
+<p>conda</p>
+<p>Note: Everything you type into a command line is case-sensitive. For accuracy, you can copy and paste the commands you see in this guide into your program.</p>
+<p>The Command Prompt should show that Miniconda is installed.</p>
+<p>Install Scrapy
+Next, install Scrapy by typing the following command and pressing Enter:</p>
+<p>conda install -c condo-forge scrapy</p>
+<p>You can confirm that the installation was successful by using the following command:</p>
+<p>run scrapy</p>
+<p>After you press Enter, it should show information to confirm that Scrapy was installed.</p>
+</div>
+</div>
+</div>
+<div class="section" id="using-scrapy">
+<h2>Using Scrapy<a class="headerlink" href="#using-scrapy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="web-scraping-best-practices">
+<h3>Web Scraping Best Practices<a class="headerlink" href="#web-scraping-best-practices" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have everything installed on our computer, we can finally use Scrapy. But before we do, we need to remember that gathering information from the web can be a little complicated. There are some websites that don’t want us to gather their data, regardless of content, and put strict guidelines in place to stop you from doing so.</p>
+<p>Although there are ways to avoid being blocked when scraping data, the easiest way is to follow the rules the website provides.</p>
+<p>Every website has a robots.txt file. It tells a web scraper if certain content on a website should be accessed. For example, go to Amazon’s website, but use the following link: <a class="reference external" href="https://www.amazon.com/robots.txt">https://www.amazon.com/robots.txt</a></p>
+<p>In this example, there is a list of links that shows where a web scraper can go. The site Disallows web scrapers from accessing multiple pages, but there are some pages - such as PrimeMusic or a wishlist - that Amazon Allows.</p>
+<p>It can be confusing to figure out what pages you are allowed to access. Thankfully, Scrapy does it for us using a ROBOTSTXT_OBEY field in a settings file.</p>
+<p>Respect the perimeters that a website puts into place, and remember to never use a website’s information for profit. For more information on web scraping best practices, go to this website: <a class="reference external" href="https://www.promptcloud.com/blog/web-scraping-best-practices">https://www.promptcloud.com/blog/web-scraping-best-practices</a></p>
+</div>
+<div class="section" id="create-a-new-project">
+<h3>Create a New Project<a class="headerlink" href="#create-a-new-project" title="Permalink to this headline">¶</a></h3>
+<p>Let’s get ready to scrape the web. In this guide, we are going to use Rotten Tomatoes as our example.</p>
+<p>The first thing we want to do is create a new Scrapy project on our computer. Use your command line to navigate to the location where you want to start your project. This can be done using the cd command.</p>
+<p>For example, Mac users would use the following command to access the Documents folder:</p>
+<p>cd Documents</p>
+<p>Windows users, on the other hand, would use a command similar to the following (replacing username with your own username):</p>
+<p>cd C:UsersusernameDocuments</p>
+<p>Note: If you aren’t sure where you are on your computer, use the command ls (Mac) or dir (Windows) and press Enter. You should see a layout of your current location. If you get too confused, quit out of the command line and reopen it. Your position should ‘reset’, allowing you to get to where you need to be.</p>
+<p>Now that you’re in the folder, let’s start a new Scrapy project using the following command:</p>
+<p>scrapy startproject tutorial</p>
+<p>If you navigate to your chosen folder on your computer, you should see a brand new ‘tutorial’ directory. While you’re in the directory, open the ‘tutorial’ folder. You should see a list of python files - they have the .py extension.</p>
+</div>
+<div class="section" id="configure-your-settings-py">
+<h3>Configure your Settings.py<a class="headerlink" href="#configure-your-settings-py" title="Permalink to this headline">¶</a></h3>
+<p>Before we begin, let’s make sure that the settings.py file I mentioned earlier is configured to follow the rules of a website’s robots.txt file. Open the settings.py file using your text editor and navigate to the following line:</p>
+<p># Obey robots.txt rules
+ROBOTSTXT_OBEY = True</p>
+<p>Make sure that the ROBOTSTXT_OBEY field is set to True, without a hashtag (#) at the beginning of the line.</p>
+<p>Note: The # at the beginning of a line of code means that the line is a comment and won’t affect how the program works.</p>
+<p>It is also important to define your user agent when scraping a website. The user agent field tells a website who is trying to collect their information and why. While not required, the user agent field is an important part of web scraping best practices.</p>
+<p>Find the user agent field in the settings.py file. Remove the hashtag before the user agent field and fill in the information: (screen).</p>
+<p>Once the fields are set, save the file and return to your folder.</p>
+</div>
+<div class="section" id="create-a-spider">
+<h3>Create a Spider<a class="headerlink" href="#create-a-spider" title="Permalink to this headline">¶</a></h3>
+<p>In the world of data scraping, you will often see ‘spiders’ mentioned. Thankfully, we aren’t talking about actual spiders. We use spiders to ‘crawl’ the code and extract the information that we need from a website.</p>
+<p>Use the following command to create a new spider:</p>
+<p>scrapy genspider reviews link</p>
+<p>In your tutorial directory, open the folder called spiders. You should see a new file called reviews_spider.py with the following contents:</p>
+<p>SCREEN</p>
+<p>(DELETE BELOW INFORMATION?)</p>
+<p>We need to create a spider. For that, we need a new python file.</p>
+<p>Windows users can open Notepad and should be able to save their file with the .py extension.</p>
+<p>Mac users using TextEdit will have to complete the following steps:
+1.      Open TextEdit. Click on TextEdit at the top right of the screen (it should be in bold).
+2.      Open Preferences
+3.      In the New Document window, make sure that the Plain Text option is selected under Format.
+4.      In the Open and Save window, you will see the following option: Add .txt extension to plain text files. Make sure this option is not checked.
+5.      Exit preferences and open a new TextEdit file. You should now be able to proceed.</p>
+<p>Once you have your text editor open, copy the following code to your clipboard and paste it into the file:</p>
+<p># This line gets all of Scrapy’s code and information so we can use it.
+import scrapy</p>
+<p># We are defining a new spider called ReviewsSpider.
+class ReviewsSpider(scrapy.Spider):</p>
+<blockquote>
+<div><blockquote>
+<div><p>name = “reviews”</p>
+<p># Scrapy makes requests to the website we choose in order to grab information.
+def start_requests(self):</p>
+<blockquote>
+<div>urls = [</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt>‘<a class="reference external" href="https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user">https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user</a>’,</dt>
+<dd><blockquote class="first">
+<div><p>]
+for url in urls:</p>
+<blockquote>
+<div>yield scrapy.Request(url=url, callback=self.parse)</div></blockquote>
+</div></blockquote>
+<p># Once we run this spider, the information will be parsed using the following criteria.
+def parse(self, response):</p>
+<blockquote class="last">
+<div><p>page = response.url.split(“/”)[-2]
+filename = ‘reviews-%s.html’ % page
+with open(filename, ‘wb’) as f:</p>
+<blockquote>
+<div>f.write(response.body)</div></blockquote>
+<p>self.log(‘Saved file %s’ % filename)</p>
+</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+<p>Different coding languages have different rules. In Python, indentation is very important. Make sure that when you paste the code into your text file, the spacing looks similar to what you see above.</p>
+<p>As you can see, I have added comments (preceded by a hashtag) that tells you what each piece of code is doing. Take a moment to look through the code.</p>
+<p>Once your information is in the file, save it as: reviews_spider.py
+Save the file in the spiders folder in your tutorial project.</p>
+</div>
+<div class="section" id="run-the-spider">
+<h3>Run the Spider<a class="headerlink" href="#run-the-spider" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have our first spider saved, configured, and ready to go, let’s run the file.</p>
+<p>Open your command line and make sure you are in your project’s tutorial folder.
+(Remember, if you aren’t sure where you are, use ls/dir to find out.)</p>
+<p>Run the following command:</p>
+<p>scrapy crawl reviews</p>
+<p>You are going to see a lot of information pop up into your command line that shows your spider crawling the information. Open your tutorial folder on your computer. You should see a file called reviews-reviews.html</p>
+<p>Open the file using your web browser. You should see a simplified replica of the Rotten Tomatoes review page. So what did Scrapy just do? We gave it a URL and asked it to get us information. We didn’t give it specific criteria, so it returned everything it could find.</p>
+</div>
+<div class="section" id="extracting-exporting-data">
+<h3>Extracting &amp; Exporting Data<a class="headerlink" href="#extracting-exporting-data" title="Permalink to this headline">¶</a></h3>
+<p>We have the information, but it doesn’t do us any good unless we can pull specific parts from the webpage. Let’s say that we want to pull all of the review comments from the page.</p>
+<p>Scrapy provides a tool called ‘scrapy shell’ that helps us work through our code and develop our spiders. Run scrapy shell using the following commands:</p>
+<p>Mac
+scrapy shell ‘<a class="reference external" href="https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user">https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user</a>’</p>
+<p>Windows
+scrapy shell “<a class="reference external" href="https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user">https://www.rottentomatoes.com/m/ghostbusters/reviews/?type=user</a>”</p>
+<p>A lot of information is going to come up in your command line, including some brief instructions and shortcuts that tell you how to navigate the scrapy shell.</p>
+<p>Note: The &gt;&gt;&gt; at the beginning of the line tells you that you are in the scrapy shell. To exit the shell, you will have to type in quit().</p>
+</div>
+<div class="section" id="find-selectors">
+<h3>Find Selectors<a class="headerlink" href="#find-selectors" title="Permalink to this headline">¶</a></h3>
+<p>Data scrapers use selectors in order to grab specific parts of a webpage. A website is made up of different kinds of code including HTML and CSS. While HTML has different parts that tells a website how to organize information, CSS tells a website what to look like.</p>
+<p>Open your web browser and navigate to the Ghostbuster’s review page. We can view the HTML and CSS of a page directly in our browser by using its Developer Tools.</p>
+<p>Chrome
+Right click the webpage and choose Inspect.</p>
+<p>Internet Explorer
+Press F12 to open Developer Tools.</p>
+<p>Safari
+Make sure that the Develop tab is enabled in your Safari Preferences
+Open the Develop tab and click Show Web Inspector</p>
+<p>Find the first review on the page and right-click on it. You should see an option that says Inspect Element. When you inspect the element, you should see that section’s HTML appear in the Developer Tools window.</p>
+<p>As you can see in the example above, when we move our cursor over the code, the associated information is highlighted. By doing this, we can easily figure out what selectors to use in our scrapy shell.</p>
+<p>In this case, we see div class=”user_review” - this is the information we need.</p>
+<p>Open your command line to go back to the scrapy shell. Use the following command:</p>
+<p>response.css(‘.user_review::text’)</p>
+<p>We are telling the scrapy shell to grab the user_review class.</p>
+<p>The shell returns a lot of information, so let’s extract the text we need using the following command:</p>
+<p>response.css(‘.user_review::text’).extract_first()</p>
+<p>Now you should see all of the movie reviews on that page - text only!</p>
+</div>
+<div class="section" id="get-ready-to-export">
+<h3>Get Ready to Export<a class="headerlink" href="#get-ready-to-export" title="Permalink to this headline">¶</a></h3>
+<p>settings.py
+FEED_FORMAT = “csv”
+FEED_URI = “reviews.csv”</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="docindex.html">Scrapy Documentation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="docindex.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Jacklyn.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
