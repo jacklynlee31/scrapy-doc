@@ -22,6 +22,6 @@ It’s no secret that we live in a digital age. Thanks to technology, we have ac
 The issue becomes even more complicated when you are working in academia or research. Researchers are often working with limited sources and an overload of information. So how do we, as researchers, navigate this new and complicated digital landscape?
 
 
-.. figure:: docs/introphoto.png
-   :scale: 50 %
+.. figure:: introphoto.jpg
+   :scale: 30%
    :alt: photo of keyboard
