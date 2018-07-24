@@ -10,13 +10,10 @@ Let’s set up your Mac so we can use Xcode, Apple’s developer software. Open 
 
     xcode-select --install
  
+
 ``Note: Everything you type into a command line is case-sensitive. For accuracy, you can copy and paste the commands you see in this guide into your program.``
 
-|
-
 Your computer will ask if you would like to install Xcode. Accept the install and let the download complete before continuing.
-
-|
 
 To confirm that Xcode was successfully installed, type the following command and press Enter:
 
@@ -35,6 +32,7 @@ Next, we need to make sure that Scrapy has everything it needs to run correctly 
 
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
  
+
 ``Note: If you are using OS X Lion 10.7 or below, you will have to use the following two commands:``
 
 .. code-block:: bash
@@ -80,7 +78,5 @@ Now we can finally install Scrapy using pip, another package management system:
     pip install Scrapy
  
 If you type Scrapy into the Terminal and press Enter, it should show some information about Scrapy commands. This lets you know that your installation was successful.
-
-|
 
 If you had problems during your installation, reference the Troubleshooting section at the end of this guide. If not, continue to the Using Scrapy section.
