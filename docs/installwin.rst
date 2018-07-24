@@ -36,8 +36,6 @@ Open the Command Prompt. Type the following command and press Enter:
 ``Note: Everything you type into a command line is case-sensitive. For accuracy, you can copy and paste the commands you see in this guide into your program.``
 
 The Command Prompt should show that Miniconda is installed.
- 
-|
 
 Install Scrapy
 ^^^^^^^^^^^^^^
