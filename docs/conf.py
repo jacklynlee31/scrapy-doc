@@ -81,7 +81,7 @@ html_theme = 'alabaster'
 # documentation.
 #
 html_theme_options = {
-    'github_user': 'jacklynlee31',
+    github_user: jacklynlee31,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
