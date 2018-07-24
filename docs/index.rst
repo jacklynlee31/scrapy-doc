@@ -27,7 +27,4 @@ The issue becomes even more complicated when you are working in academia or rese
    :scale: 80%
    :alt: photo of keyboard
    :align: center
-   
-.. class:: center
-
-   *Photo by Anas Alshanti on Unsplash*
+   :target: https://unsplash.com/photos/feXpdV001o4
