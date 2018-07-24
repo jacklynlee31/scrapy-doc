@@ -81,7 +81,7 @@ html_theme = 'alabaster'
 # documentation.
 #
 html_theme_options = {
-    'page_width': '100px',
+    'github_user': 'jacklynlee31',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
