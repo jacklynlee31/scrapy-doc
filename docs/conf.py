@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'ScrapyDoc'
-copyright = '2018, Jacklyn'
-author = 'Jacklyn'
+copyright = '2018, Jacklyn Carroll'
+author = 'Jacklyn Carroll'
 
 # The short X.Y version
 version = ''
